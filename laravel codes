@@ -1,0 +1,30 @@
+to generates model migration controller resources
+*-php artisan make:model (model name) -mcr
+
+
+to import excel file
+write in terminal 
+*-composer require maatwebsite/excel
+
+write in config/app.php
+in provider
+*-Maatwebsite\Excel\ExcelServiceProvider::class,
+
+in aliases
+
+Excel=>Maatwebsite\Excel\Facades\Excel::class,
+
+to get file path from device
+ 
+ $path = $request->file('input_name')->getRealPath();
+
+to get data from excel write this function
+
+Excel::load('file_path', function($reader) {
+
+$array = $reader->toArray()[0];
+
+foreach ($array as $ar){
+    dd($ar['type']);
+}
+});
